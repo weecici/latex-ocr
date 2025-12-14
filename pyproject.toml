@@ -1,0 +1,23 @@
+[project]
+name = "cs231-latex-ocr"
+version = "0.1.0"
+description = "CS231 LaTeX OCR project."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "datasets>=4.2.0",
+    "evaluate>=0.4.6",
+    "hf-transfer>=0.1.9",
+    "ipykernel>=7.1.0",
+    "ipywidgets>=8.1.8",
+    "matplotlib>=3.10.7",
+    "opencv-python>=4.12.0.88",
+    "pix2tex[gui]>=0.1.4",
+    "pylatexenc>=3.0a33",
+    "rapidfuzz>=3.14.3",
+    "seaborn>=0.13.2",
+    "torch>=2.9.0",
+    "torchinfo>=1.8.0",
+    "torchvision>=0.24.0",
+    "transformers>=4.57.1",
+]
