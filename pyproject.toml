@@ -14,6 +14,7 @@ dependencies = [
     "opencv-python>=4.12.0.88",
     "pix2tex[gui]>=0.1.4",
     "pylatexenc>=3.0a33",
+    "pyqt6>=6.10.0",
     "rapidfuzz>=3.14.3",
     "seaborn>=0.13.2",
     "torch>=2.9.0",
