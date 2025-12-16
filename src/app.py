@@ -29,10 +29,11 @@ from texo.data.processor import EvalMERImageProcessor
 from texo.model.formulanet import FormulaNet
 from crnn import Im2LatexModel, Config, Vocab, inference
 
+AvailableModels = Literal["hgnet", "crnn"]
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-DEFAULT_MODEL: Literal["hgnet", "crnn"] = "hgnet"
+DEFAULT_MODEL: AvailableModels = "hgnet"
 
 
 class SnippingWidget(QWidget):
@@ -115,11 +116,14 @@ class LatexOCRApp(QMainWindow):
         self.setWindowTitle("LaTeX OCR")
         self.setGeometry(100, 100, 800, 600)
 
+        # Enable drag-and-drop on the main window
+        self.setAcceptDrops(True)
+
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model = None
         self.tokenizer = None
         self.current_image = None  # PIL Image
-        self.model_to_use: Literal["hgnet", "crnn"] = DEFAULT_MODEL
+        self.model_to_use: AvailableModels = DEFAULT_MODEL
 
         self.init_ui()
         self.load_model()
@@ -171,6 +175,11 @@ class LatexOCRApp(QMainWindow):
         self.result_text.setMaximumHeight(100)
         self.result_text.setFontPointSize(12)
         layout.addWidget(self.result_text)
+
+        # Hint for drag-and-drop usage
+        self.result_text.setPlaceholderText(
+            "You can also drag and drop an image onto the window."
+        )
 
     def on_model_changed(self, index: int):
         # Update selected model and reload
@@ -344,6 +353,46 @@ class LatexOCRApp(QMainWindow):
 
         self.image_label.setPixmap(pixmap)
         self.image_label.setText("")
+
+    def dragEnterEvent(self, event):
+        mime = event.mimeData()
+        if mime.hasUrls():
+            # Accept if at least one local image file is present
+            for url in mime.urls():
+                if url.isLocalFile():
+                    ext = os.path.splitext(url.toLocalFile())[1].lower()
+                    if ext in {".png", ".jpg", ".jpeg", ".bmp", ".gif", ".webp"}:
+                        event.acceptProposedAction()
+                        return
+        event.ignore()
+
+    def dropEvent(self, event):
+        mime = event.mimeData()
+        if not mime.hasUrls():
+            event.ignore()
+            return
+
+        for url in mime.urls():
+            if not url.isLocalFile():
+                continue
+            file_path = url.toLocalFile()
+            ext = os.path.splitext(file_path)[1].lower()
+            if ext not in {".png", ".jpg", ".jpeg", ".bmp", ".gif", ".webp"}:
+                continue
+
+            try:
+                img = Image.open(file_path)
+                self.set_image(img)
+                # Automatically run inference after dropping an image
+                self.run_inference()
+            except Exception as e:
+                QMessageBox.critical(
+                    self, "Error", f"Failed to open dropped image: {e}"
+                )
+            finally:
+                break
+
+        event.acceptProposedAction()
 
     def run_inference(self):
         if self.current_image is None:
