@@ -16,3 +16,6 @@ tmp/
 config/
 report/
 models/
+*.pkl
+*.pt
+*.pth
