@@ -14,3 +14,6 @@ LaTeX-OCR is an advanced Optical Character Recognition (OCR) system specifically
 This repository includes:
 - The 6 notebooks used for training and evaluating the LaTeX-OCR model. (in `Notebook` folder)
 - The web application for users to upload images and receive LaTeX code output. (in `WebDemo` folder)
+
+## 4. Weights
+Download weights from [Drive](https://drive.google.com/drive/folders/1fPs3ZLPbfQ6K0ZmMlUNEwdPOdg9NxlFP?usp=sharing) and edit the config.py file in each WebDemo
