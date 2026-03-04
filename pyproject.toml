@@ -1,7 +1,7 @@
 [project]
-name = "cs231-latex-ocr"
+name = "latex-ocr"
 version = "0.1.0"
-description = "CS231 LaTeX OCR project."
+description = "LaTeX OCR project."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
@@ -20,6 +20,7 @@ dependencies = [
     "pyqt6>=6.10.0",
     "rapidfuzz>=3.14.3",
     "seaborn>=0.13.2",
+    "streamlit>=1.55.0",
     "torch>=2.9.0",
     "torchinfo>=1.8.0",
     "torchvision>=0.24.0",
