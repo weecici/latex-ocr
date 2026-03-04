@@ -169,3 +169,8 @@ Python | PyTorch | Streamlit | timm | Albumentations | OpenCV | Matplotlib | NLT
 ## License
 
 See [LICENSE](LICENSE) for details.
+
+## References
+[[1]] Deng, Y., Kanervisto, A., Ling, J., & Rush, A. M. (2017). Image-to-Markup Generation with Coarse-to-Fine Attention. https://arxiv.org/abs/1609.04938 
+[[2]] Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, L., & Polosukhin, I. (2023). Attention Is All You Need. https://arxiv.org/abs/1706.03762 
+[[3]] Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., Gelly, S., Uszkoreit, J., & Houlsby, N. (2021). An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. https://arxiv.org/abs/2010.11929 
