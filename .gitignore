@@ -18,3 +18,5 @@ report/
 *.pkl
 *.pt
 *.pth
+/weights/**
+!*.gitkeep
