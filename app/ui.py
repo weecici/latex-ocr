@@ -17,7 +17,7 @@ import pickle as pkl
 import numpy as np
 
 from config import MODEL_REGISTRY, VOCAB_PATH, DEFAULT_BEAM_SIZE, DEFAULT_MAX_LEN
-from utils.transform import inference_transform, visual_transform
+from utils.transform import inference_transform, visual_transform, preprocess_image
 from utils.vocab import Vocab
 
 # ── Page config ──────────────────────────────────────────────────────────────
@@ -183,16 +183,22 @@ col_left, col_right = st.columns(2, gap="large")
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
 
+    # Preprocess image (im2latex-100k style)
+    preprocessed_np = preprocess_image(image)
+
     with col_left:
         st.markdown("#### Input Image")
         st.image(image, use_container_width=True)
+        with st.expander("Preprocessed Image", expanded=False):
+            st.image(preprocessed_np, use_container_width=True)
+            st.caption("Binarized & whitespace-cropped (im2latex-100k style)")
 
     # Predict button
     if st.button("Predict", type="primary", use_container_width=True):
         with st.spinner("Running inference..."):
             producer, entry = load_producer(selected_model, beam_size, max_len)
 
-            img_np = np.array(image)
+            img_np = preprocessed_np
             img_dict = inference_transform(image=img_np)
             img_tensor = img_dict["image"].unsqueeze(0)  # [1, C, H, W]
 
