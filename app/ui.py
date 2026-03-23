@@ -34,56 +34,61 @@ st.markdown(
     <style>
     /* Sidebar styling */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+        background: linear-gradient(180deg, #0c1222 0%, #131b2e 50%, #0f1729 100%);
     }
     section[data-testid="stSidebar"] * {
-        color: #e0e0e0 !important;
+        color: #c8d6e5 !important;
     }
     section[data-testid="stSidebar"] .stSelectbox label,
     section[data-testid="stSidebar"] .stSlider label,
     section[data-testid="stSidebar"] .stNumberInput label {
         font-weight: 600 !important;
+        letter-spacing: 0.02em;
     }
 
     /* Main header */
     .main-header {
         text-align: center;
-        padding: 1rem 0 0.5rem 0;
+        padding: 1.5rem 0 0.75rem 0;
     }
     .main-header h1 {
-        font-size: 2.2rem;
-        font-weight: 700;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        font-size: 2.4rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.3rem;
+        letter-spacing: -0.02em;
     }
     .main-header p {
-        color: #888;
-        font-size: 1rem;
+        color: #94a3b8;
+        font-size: 1.05rem;
+        font-weight: 400;
     }
 
     /* Result card */
     .result-card {
-        background: #f8f9fa;
-        border-radius: 12px;
+        background: linear-gradient(135deg, #f0f9ff 0%, #faf5ff 100%);
+        border-radius: 14px;
         padding: 1.5rem;
-        border: 1px solid #e9ecef;
+        border: 1px solid #e2e8f0;
         margin-top: 0.5rem;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
     }
 
     /* Model info badge */
     .model-badge {
         display: inline-block;
-        padding: 0.25rem 0.75rem;
+        padding: 0.3rem 0.85rem;
         border-radius: 20px;
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         font-weight: 600;
         margin: 0.2rem;
+        letter-spacing: 0.02em;
     }
-    .badge-baseline { background: #e3f2fd; color: #1565c0; }
-    .badge-enhanced { background: #f3e5f5; color: #7b1fa2; }
-    .badge-transformer { background: #e8f5e9; color: #2e7d32; }
+    .badge-baseline { background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; }
+    .badge-enhanced { background: #f5f3ff; color: #7c3aed; border: 1px solid #c4b5fd; }
+    .badge-transformer { background: #fdf2f8; color: #be185d; border: 1px solid #f9a8d4; }
 
     /* Hide Streamlit branding */
     #MainMenu {visibility: hidden;}
