@@ -38,7 +38,7 @@ The project explores three tiers of model complexity, each progressively incorpo
 | CNN + Transformer | Custom CNN + 2D PE | 8-layer Transformer | Multi-head self + cross |
 | ViT + Transformer | ViT-Small/8        | 8-layer Transformer | Multi-head self + cross |
 
-All models share a common vocabulary (`vocab.pkl`, 502 tokens) and use the same image preprocessing pipeline (pad to multiples of 16, grayscale normalization).
+All models share a common vocabulary (`vocab.pkl`, extracted from im2latex-100k dataset) and use the same image preprocessing pipeline (pad to multiples of 16, grayscale normalization).
 
 ---
 
@@ -52,14 +52,14 @@ Evaluated on the im2latex-100k test set:
 | ResNet-18 + LSTM      |   61.07   |      4.27       |        68.75        |
 | CNN + LSTM (Enhanced) |   89.48   |      41.28      |        91.14        |
 | ViT + LSTM            |   78.61   |      17.46      |        82.28        |
-| **CNN + Transformer** | **91.46** |    **46.95**    |      **93.87**      |
-| **ViT + Transformer** | **91.46** |    **46.95**    |      **93.87**      |
+| **CNN + Transformer** | **91.46** |    **46.95**    |        93.87        |
+| **ViT + Transformer** | **91.12** |    **46.06**    |      **93.91**      |
 
 Key findings:
 
 - Multi-head cross-attention improved BLEU-4 by **+12.6** over the baseline CNN+LSTM
 - The Transformer decoder achieved the highest overall scores, with **91.46 BLEU-4** and **46.95% exact match**
-- Replacing the CNN encoder with ViT showed mixed results: helpful with the LSTM decoder tier but comparable in the Transformer tier
+- Replacing the CNN encoder with ViT showed mixed results: helpful with the LSTM decoder tier but comparable in the Transformer Decoder tier
 
 ---
 
