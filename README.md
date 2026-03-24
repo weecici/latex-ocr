@@ -57,8 +57,8 @@ Evaluated on the im2latex-100k test set:
 
 Key findings:
 
-- Multi-head cross-attention improved BLEU-4 by **+12.6** over the baseline CNN+LSTM
-- The Transformer decoder achieved the highest overall scores, with **91.46 BLEU-4** and **46.95% exact match**
+- Multi-head cross-attention and 2D Positional Encoding improved BLEU-4 by **+12.6** over the baseline CNN+LSTM
+- The CNN with Transformer decoder achieved the highest overall scores, with **91.46 BLEU-4** and **46.95% exact match**
 - Replacing the CNN encoder with ViT showed mixed results: helpful with the LSTM decoder tier but comparable in the Transformer Decoder tier
 
 ---
